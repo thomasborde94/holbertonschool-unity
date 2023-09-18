@@ -7,8 +7,13 @@ public class PlayerController : MonoBehaviour
     #region Show in Inspector
 
     [SerializeField] private float _movementSpeed;
+    [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] GroundCheckerWithOverlap _groundTester;
+
+    [SerializeField] Camera _camera;
+
+    [SerializeField] Transform respawn;
 
     #endregion
     private void Awake()
@@ -26,16 +31,6 @@ public class PlayerController : MonoBehaviour
     {
         _speed = 0f;
         _isGrounded = _groundTester.TestCollision();
-
-        /*if (_isGrounded)
-        {
-
-        }
-        else
-        {
-            _gravity = Physics.gravity * _gravityFallMultiplier * Time.fixedDeltaTime;
-        }*/
-
 
         if (inputDirection.magnitude > 0.1)
         {
@@ -59,6 +54,23 @@ public class PlayerController : MonoBehaviour
                 _isJumping = false;
             }
         }
+
+        Vector3 camForward = _camera.transform.forward;
+
+        // stops player from rotating upwards based on camera orientation
+        camForward.y = 0;
+        if (inputDirection != Vector3.zero)
+        {
+            // Quaternion.LookRotation function is used to create a quaternion that represents the rotation needed to align an
+            // object's forward direction with a specified direction vector.
+            // Here, it creates a rotation that aligns the player's forward direction with the camera's horizontal forward direction(camForward).
+            //This ensures that the player character will face the same direction as the camera's forward direction on the horizontal plane.
+            Quaternion playerRotation = Quaternion.LookRotation(camForward);
+
+            // Updates rotation of player
+            transform.rotation = Quaternion.Slerp(transform.rotation, playerRotation, _turnSpeed *Time.deltaTime);
+        }
+        
     }
 
     #region Private Methods
@@ -68,7 +80,9 @@ public class PlayerController : MonoBehaviour
         // Horizontal movement
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        inputDirection = new Vector3(horizontal, 0, vertical);
+
+        // Here, the quaternion operation allows the camera to affect the player direct movement
+        inputDirection = Quaternion.Euler(0, _camera.transform.eulerAngles.y, 0) * new Vector3(horizontal, 0, vertical);
         inputDirection.Normalize();
 
         // Jump
@@ -78,6 +92,19 @@ public class PlayerController : MonoBehaviour
             {
                 _isJumping = true;
             }
+        }
+    }
+
+    private void Fell()
+    {
+        transform.position = respawn.position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Respawn")
+        {
+            Fell();
         }
     }
 
