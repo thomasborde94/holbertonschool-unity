@@ -900,7 +900,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &703666384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,6 +2531,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: ApplyButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6689019574893865546, guid: 46fd84230e0f8a544a95afa0182af43c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689019574893865546, guid: 46fd84230e0f8a544a95afa0182af43c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689019574893865546, guid: 46fd84230e0f8a544a95afa0182af43c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8526541234875482270}
+    - target: {fileID: 6689019574893865546, guid: 46fd84230e0f8a544a95afa0182af43c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689019574893865546, guid: 46fd84230e0f8a544a95afa0182af43c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Apply
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689019574893865546, guid: 46fd84230e0f8a544a95afa0182af43c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689019574893865546, guid: 46fd84230e0f8a544a95afa0182af43c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7902863756563404775, guid: 46fd84230e0f8a544a95afa0182af43c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2803,6 +2838,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5314081865224290840, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: yInverted
+      value: 
+      objectReference: {fileID: 574556060}
     - target: {fileID: 7605119356759973915, guid: 1a64660f1bda9fd43b0a9104925050c1,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -8,13 +8,18 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private float _mouseSensitivity;
     [SerializeField] Transform _target;
-    [SerializeField] public bool isInverted;
+    [HideInInspector] public bool isInverted;
 
     #endregion
 
     private void Awake()
     {
         _offset = transform.position - _target.position;
+    }
+
+    private void Start()
+    {
+        LoadYInvertedToggleState();
     }
     private void Update()
     {
@@ -36,6 +41,15 @@ public class CameraController : MonoBehaviour
 
         // Ensures that the camera always faces the target object
         transform.LookAt(_target.position);
+    }
+
+    private void LoadYInvertedToggleState()
+    {
+        int toggleState = PlayerPrefs.GetInt(OptionsMenu.instance.toggleId, 0);
+        if (toggleState == 1)
+            isInverted = true;
+        else
+            isInverted = false;
     }
 
     #region Private
