@@ -7,9 +7,9 @@ public class OptionsMenu : MonoBehaviour
 {
     private string lastSceneName = "MainMenu";
 
-    private void Update()
+    private void Awake()
     {
-        Debug.Log(PlayerPrefs.GetString("LastScene"));
+        Time.timeScale = 1f;
     }
     private void Start()
     {
@@ -17,8 +17,8 @@ public class OptionsMenu : MonoBehaviour
         {
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
             PlayerPrefs.Save();
-            lastSceneName = PlayerPrefs.GetString("LastScene");
         }
+        lastSceneName = PlayerPrefs.GetString("LastScene");
     }
     #region Public methods
     public void Back()

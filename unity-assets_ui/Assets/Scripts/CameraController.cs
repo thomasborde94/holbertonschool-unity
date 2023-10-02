@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private float _mouseSensitivity;
     [SerializeField] Transform _target;
+    [SerializeField] bool isInverted;
 
     #endregion
 
@@ -23,8 +24,12 @@ public class CameraController : MonoBehaviour
 
         // calculates the new camera offset based on mouse movement
         // using -transform.right so the camera z offset does not depend on where the camera is looking.
-        _offset = Quaternion.AngleAxis(mouseX * _mouseSensitivity, Vector3.up) *
+        if (!isInverted)
+            _offset = Quaternion.AngleAxis(mouseX * _mouseSensitivity, Vector3.up) *
             Quaternion.AngleAxis(mouseY * _mouseSensitivity, -transform.right) * _offset;
+        else
+            _offset = Quaternion.AngleAxis(mouseX * _mouseSensitivity, Vector3.up) *
+            Quaternion.AngleAxis(mouseY * _mouseSensitivity, transform.right) * _offset;
 
         //After calculating the new camera offset, updates the camera's position to be relative to the target.
         transform.position = _target.position + _offset;
