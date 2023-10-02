@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private float _mouseSensitivity;
     [SerializeField] Transform _target;
-    [SerializeField] bool isInverted;
+    [SerializeField] public bool isInverted;
 
     #endregion
 
