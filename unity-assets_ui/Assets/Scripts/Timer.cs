@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     #region Show in Inspector
 
-    [SerializeField] public Text timerText;
+    [SerializeField] public TextMeshProUGUI timerText;
 
     [HideInInspector] public float timeValue = 0f;
 
