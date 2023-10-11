@@ -4,8 +4,7 @@ public class Checkpoint : MonoBehaviour
 {
     #region Show In Inspector
 
-    [SerializeField]
-    private Transform _spawPoint;
+    [SerializeField] private Transform _spawPoint;
 
 
     #endregion
@@ -13,9 +12,9 @@ public class Checkpoint : MonoBehaviour
 
     #region Collisions
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             _spawPoint.position = transform.position;
         }

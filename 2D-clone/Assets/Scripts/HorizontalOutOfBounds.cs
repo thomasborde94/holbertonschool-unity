@@ -2,11 +2,12 @@
 
 public class HorizontalOutOfBounds : MonoBehaviour
 {
+    public static HorizontalOutOfBounds instance;
     #region Show In Inspector
 
     [SerializeField] private Transform _boundYLevel;
     [SerializeField] private Transform _playerTransform;
-    [SerializeField] private Transform _respawnPoint;
+    [SerializeField] public Transform _respawnPoint;
     [SerializeField] private Color _gizmosColor;
     [SerializeField] private IntVariable _score;
 
@@ -14,11 +15,15 @@ public class HorizontalOutOfBounds : MonoBehaviour
 
 
     #region Unity Lifecycle
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Update()
     {
         if (IsBelow(_playerTransform.position))
         {
-            _score.Value -= 50;
+            _score.Value -= 30;
             _playerTransform.position = _respawnPoint.position;
             if (_playerTransform.TryGetComponent(out Rigidbody2D rigidbody))
             {
@@ -30,14 +35,14 @@ public class HorizontalOutOfBounds : MonoBehaviour
     #endregion
 
 
-    #region Private methods
-    private bool IsBelow(Vector2 point)
+    #region Public methods
+    public bool IsBelow(Vector2 point)
     {
         return point.y < _boundYLevel.position.y;
     }
 
-    #endregion
 
+    #endregion
 
     #region Debug
     private void OnDrawGizmos()

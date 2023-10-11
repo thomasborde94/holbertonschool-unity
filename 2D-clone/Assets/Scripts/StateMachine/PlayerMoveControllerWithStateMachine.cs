@@ -14,6 +14,7 @@ public class PlayerMoveControllerWithStateMachine : MonoBehaviour, IDamageable
     [SerializeField] private float _longJumpGravityScale;
 
     [SerializeField] public int _health;
+    [SerializeField] private IntVariable score;
 
     public int Health
     {
@@ -150,7 +151,18 @@ public class PlayerMoveControllerWithStateMachine : MonoBehaviour, IDamageable
     public void Damage(int damage)
     {
         Health -= damage;
+        score.Value -= 10;
         StartCoroutine(BlinkSprite());
+
+        if (Health < 1)
+        {
+            _transform.position = HorizontalOutOfBounds.instance._respawnPoint.position;
+            if (_transform.TryGetComponent(out Rigidbody2D rigidbody))
+            {
+                rigidbody.velocity = Vector2.zero;
+            }
+            Health = 5;
+        }
     }
     #endregion
 
