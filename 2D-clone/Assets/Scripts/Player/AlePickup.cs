@@ -11,7 +11,8 @@ public class AlePickup : MonoBehaviour
 
 
     #region Collisions
-
+    /// <summary>Ale pickup</summary>
+    /// <param name="collision">player collider</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ale"))

@@ -545,7 +545,7 @@ MonoBehaviour:
   _fallGravityScale: 4
   _shortJumpGravityScale: 3
   _longJumpGravityScale: 1.5
-  _health: 5
+  _health: 3
   score: {fileID: 11400000, guid: d9993b9cde6d18b46aeea0a69e1838b8, type: 2}
 --- !u!114 &8607721250942526836
 MonoBehaviour:

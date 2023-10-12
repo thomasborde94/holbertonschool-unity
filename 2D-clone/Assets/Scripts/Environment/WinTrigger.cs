@@ -15,6 +15,9 @@ public class WinTrigger : MonoBehaviour
     {
         instance = this;
     }
+
+    /// <summary>Displays win canvas at the end of the level</summary>
+    /// <param name="other">player collider</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")

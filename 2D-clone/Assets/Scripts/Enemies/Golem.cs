@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Golem : Enemy, IDamageable
 {
+    /// <summary>
+    /// Defines attacks behavior of the golem enemy
+    /// </summary>
     public override void Attack()
     {
-        float distance = Vector3.Distance(_transform.localPosition, _player[0].transform.localPosition);
+        float distance = Vector3.Distance(_transform.localPosition, _player.transform.localPosition);
         if (distance > 12f)
         {
             isHit = false;

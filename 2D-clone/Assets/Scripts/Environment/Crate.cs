@@ -10,6 +10,10 @@ public class Crate : MonoBehaviour
     [SerializeField] private SpriteRenderer _sr;
 
     #endregion
+    /// <summary>
+    /// Opens crate and gives weapon to the player
+    /// </summary>
+    /// <param name="other">player collider</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")

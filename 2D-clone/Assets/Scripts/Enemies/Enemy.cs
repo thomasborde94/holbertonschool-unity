@@ -15,7 +15,7 @@ public abstract class Enemy : MonoBehaviour
     protected Transform _transform;
 
     protected bool isHit = false;
-    protected PlayerMoveControllerWithStateMachine[] _player = new PlayerMoveControllerWithStateMachine[2];
+    protected PlayerMoveControllerWithStateMachine _player;
     protected bool isDead = false;
 
     public int Health
@@ -35,6 +35,7 @@ public abstract class Enemy : MonoBehaviour
     {
         if (isDead)
             return;
+        // Player bounces when jumping on enemy
         if (jumpAttacked)
         {
             _playerRb.velocity = new Vector2(_playerRb.velocity.x, 0);
@@ -62,9 +63,7 @@ public abstract class Enemy : MonoBehaviour
     #endregion
 
     #region Public methods
-    /// <summary>
-    /// Enemy Movement behavior  
-    /// </summary>
+    /// <summary>Enemy Movement behavior</summary>
     public virtual void Movement()
     {
         if (_currentTarget == pointA.position)
@@ -89,7 +88,7 @@ public abstract class Enemy : MonoBehaviour
         }
 
         // Facing direction 
-        Vector3 direction = _player[0].transform.localPosition - _transform.localPosition;
+        Vector3 direction = _player.transform.localPosition - _transform.localPosition;
         if (direction.x > 0 && _anim.GetBool("InCombat") == true)
         {
             _theSr.flipX = false;
@@ -108,16 +107,7 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Init()
     {
         _transform = GetComponent<Transform>();
-        _player[0] = GameObject.Find("Player1").GetComponent<PlayerMoveControllerWithStateMachine>();
-        GameObject player2GameObject = GameObject.Find("Player2");
-        if (player2GameObject != null)
-        {
-            PlayerMoveControllerWithStateMachine player2Component = player2GameObject.GetComponent<PlayerMoveControllerWithStateMachine>();
-            if (player2Component != null)
-            {
-                _player[1] = player2Component;
-            }
-        }
+        _player = GameObject.Find("Player1").GetComponent<PlayerMoveControllerWithStateMachine>();
         _anim.SetBool("CanAttack", true);
     }
     #endregion
@@ -127,15 +117,16 @@ public abstract class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isDead)
         {
+            // Damages the enemy when jumped on by player
             if (other.attachedRigidbody.velocity.y < 0)
             {
-                Debug.Log("jumped on enemy");
                 _playerRb = other.attachedRigidbody;
                 jumpAttacked = true;
                 Damage(1);
             }
             else
             {
+                // Damages the player if touched by the enemy
                 if (_canDamage == true)
                 {
                     _canDamage = false;
@@ -144,18 +135,19 @@ public abstract class Enemy : MonoBehaviour
                 }
             }
         }
+        // Damages the enemy when hit by weapon
         if (other.CompareTag("PlayerWeapon") && !isDead)
         {
-            Debug.Log("hit by weapon");
             Damage(2);
         }
     }
 
+    /// <summary>Damages the players when staying in contact of enemy</summary>
+    /// <param name="other">player collider</param>
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !isDead)
         {
-            Debug.Log("hit player");
             if (_canDamage == true)
             {
                 _canDamage = false;
@@ -165,6 +157,8 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    /// <summary>Damages the gameobject</summary>
+    /// <param name="damage">amount of damage</param>
     public void Damage(int damage)
     {
         if (isDead)
@@ -174,13 +168,12 @@ public abstract class Enemy : MonoBehaviour
         Health -= damage;
         _anim.SetTrigger("Hit");
         isHit = true;
-        Debug.Log("should be in combat");
         _anim.SetBool("InCombat", true);
         score.Value += damage * 5;
         
     }
     #endregion
-
+    /// <summary>Allows player to take damages once every 1.2f</summary>
     IEnumerator ResetDamage()
     {
         yield return new WaitForSeconds(1.2f);

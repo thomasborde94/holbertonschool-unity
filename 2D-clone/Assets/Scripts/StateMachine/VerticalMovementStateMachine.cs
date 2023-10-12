@@ -23,19 +23,6 @@ public class VerticalMovementStateMachine : MonoBehaviour
     #endregion
 
 
-    /*#region Public properties
-
-    public VerticalMovementState CurrentState
-    {
-        get
-        {
-            return _currentState;
-        }
-    }
-
-    #endregion*/
-
-
     #region Unity Lifecycle
 
     private void Update()

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ale
+  - PlayerWeapon
+  - Enemy
+  - AttackHitbox
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Ground
+  - Player
+  - Trigger
+  - Platform
+  - DestructibleObstacle
+  - Collectible
+  - PlayerWeapon
+  - Enemy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 3108771953
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Frontground
+    uniqueID: 1889827223
+    locked: 0
+  - name: Player
+    uniqueID: 2556025277
+    locked: 0
