@@ -187,6 +187,8 @@ public class PlayerMoveControllerWithStateMachine : MonoBehaviour, IDamageable
             spriteRenderer.enabled = true;
     }
 
+
+
     #endregion
     #region Private
 
