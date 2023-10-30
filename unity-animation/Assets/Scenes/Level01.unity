@@ -1508,6 +1508,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4217625767596401917}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &566935634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9039943649745360683, guid: c4fba30ad9ccf7044b797ad3de6aa786,
+    type: 3}
+  m_PrefabInstance: {fileID: 4217625767596401917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566935627}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e365ffba579b964fb689870e0f2ba06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &583956369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 69c688444bcf08040af0c1a405c9f561,
@@ -2642,6 +2654,7 @@ GameObject:
   - component: {fileID: 1047465097}
   - component: {fileID: 1047465096}
   - component: {fileID: 1047465095}
+  - component: {fileID: 1047465098}
   - component: {fileID: 1047465094}
   - component: {fileID: 1047465093}
   m_Layer: 0
@@ -2790,6 +2803,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -4.934, y: 0, z: 0}
+--- !u!114 &1047465098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047465092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65f76751deb13d4e80ed22771b8f920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 330585543}
+  _playerController: {fileID: 566935634}
+  _timerCanvas: {fileID: 1423538752}
+  _cutsceneCamera: {fileID: 1047465092}
 --- !u!1 &1071887220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3376,6 +3405,12 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2849697543281944151, guid: 09932b21d422f424ab420b5092b24b9f, type: 3}
+--- !u!1 &1423538752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 349777648990511749, guid: 916e74f249c28844fb0c46471ff51bd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1432891288570637957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1438138358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4967,6 +5002,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimerCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 349777648990511749, guid: 916e74f249c28844fb0c46471ff51bd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5077874878907383240, guid: 916e74f249c28844fb0c46471ff51bd2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5103,26 +5143,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 539933684608914957, guid: c4fba30ad9ccf7044b797ad3de6aa786,
-        type: 3}
-      propertyPath: winText
-      value: 
-      objectReference: {fileID: 1981295860}
-    - target: {fileID: 539933684608914957, guid: c4fba30ad9ccf7044b797ad3de6aa786,
-        type: 3}
-      propertyPath: timerText
-      value: 
-      objectReference: {fileID: 1096271415}
-    - target: {fileID: 3497547179654730924, guid: c4fba30ad9ccf7044b797ad3de6aa786,
-        type: 3}
-      propertyPath: _camera
-      value: 
-      objectReference: {fileID: 330585545}
-    - target: {fileID: 3497547179654730924, guid: c4fba30ad9ccf7044b797ad3de6aa786,
-        type: 3}
-      propertyPath: respawn
-      value: 
-      objectReference: {fileID: 1071887221}
     - target: {fileID: 4127132807586798334, guid: c4fba30ad9ccf7044b797ad3de6aa786,
         type: 3}
       propertyPath: m_Name
