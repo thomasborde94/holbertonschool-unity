@@ -19,6 +19,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         _anim.SetBool("Move", _player.Move);
         _anim.SetBool("Jumping", _player.IsJumping);
+        _anim.SetBool("Falling", _player.Falling);
     }
     #endregion
     #region Private

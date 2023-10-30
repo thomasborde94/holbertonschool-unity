@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         GetInputs();
-        Debug.Log(Move);
+        if (_isGrounded)
+            _fell = false;
     }
 
     private void FixedUpdate()
@@ -109,6 +110,7 @@ public class PlayerController : MonoBehaviour
     private void Fell()
     {
         transform.position = respawn.position;
+        _fell = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -138,6 +140,14 @@ public class PlayerController : MonoBehaviour
             return _isJumping;
         }
     }
+
+    public bool Falling
+    {
+        get
+        {
+            return _fell;
+        }
+    }
     #endregion
     #region Private
 
@@ -149,6 +159,7 @@ public class PlayerController : MonoBehaviour
     private bool _isJumping;
 
     private bool _isGrounded;
+    private bool _fell;
 
     #endregion
 }
