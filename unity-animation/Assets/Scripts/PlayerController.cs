@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         inputDirection.Normalize();
 
         // Jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_isGrounded)
             {
