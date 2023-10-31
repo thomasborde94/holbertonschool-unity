@@ -22,6 +22,12 @@ public class PlayerAnimation : MonoBehaviour
         _anim.SetBool("Falling", _player.Falling);
     }
     #endregion
+
+    public void allowMoving()
+    {
+        _player.canMove = true;
+    }
+
     #region Private
 
     private Animator _anim;

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Transform respawn;
 
+    [HideInInspector] public bool canMove = true;
     #endregion
     private void Awake()
     {
@@ -24,7 +25,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        GetInputs();
+        if (canMove)
+            GetInputs();
         if (_isGrounded)
             _fell = false;
     }
@@ -111,6 +113,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = respawn.position;
         _fell = true;
+        canMove = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -122,6 +125,7 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
 
     #region Public Properties
 
