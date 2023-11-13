@@ -1572,6 +1572,21 @@ PrefabInstance:
       objectReference: {fileID: 831634363}
     - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
         type: 3}
+      propertyPath: cherryMonday
+      value: 
+      objectReference: {fileID: 8300000, guid: 95ab8a2b69514aa4891dd45dcf4782f5, type: 3}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: grassLanding
+      value: 
+      objectReference: {fileID: 8300000, guid: fe0e8334bae96ac409403c78310a9e10, type: 3}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: stoneLanding
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e087b638d1bc364d8d985713ee2ce7d, type: 3}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
       propertyPath: grassFootstep
       value: 
       objectReference: {fileID: 8300000, guid: c66a4c7b695659a43bb36e4adab32ebb, type: 3}
@@ -1584,7 +1599,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 95ab8a2b69514aa4891dd45dcf4782f5, type: 3}
     - target: {fileID: 3007624024208148071, guid: 1a64660f1bda9fd43b0a9104925050c1,
         type: 3}
       propertyPath: m_PlayOnAwake
