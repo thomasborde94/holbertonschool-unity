@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
+        ChooseLoop();
         if (canPlayClip)
         {
             canPlayClip = false;
