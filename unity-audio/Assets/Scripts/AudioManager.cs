@@ -10,11 +10,16 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioSource clipAudio;
     [SerializeField] AudioClip buttonRollover;
     [SerializeField] AudioClip buttonClick;
+    [SerializeField] AudioClip stoneFootstep;
+    [SerializeField] AudioClip grassFootstep;
+    [SerializeField] AudioClip stoneLanding;
+    [SerializeField] AudioClip grassLanding;
 
     [SerializeField] AudioClip wallPaper;
+    [SerializeField] AudioClip cherryMonday;
 
     public int clipState = 1;
-    public int musicState = 1;
+    public int musicState = 0;
     [HideInInspector] public bool canPlayClip;
     [HideInInspector] public bool canPlayLoop;
     #endregion
@@ -45,14 +50,50 @@ public class AudioManager : MonoBehaviour
                 clipAudio.Play();
                 clipAudio.loop = false;
             }
+            if (clipState == 3)
+            {
+                clipAudio.clip = stoneFootstep;
+                clipAudio.Play();
+                clipAudio.loop = false;
+            }
+            if (clipState == 4)
+            {
+                clipAudio.clip = grassFootstep;
+                clipAudio.Play();
+                clipAudio.loop = false;
+            }
+            if (clipState == 5)
+            {
+                clipAudio.clip = stoneLanding;
+                clipAudio.Play();
+                clipAudio.loop = false;
+            }
+            if (clipState == 6)
+            {
+                clipAudio.clip = grassLanding;
+                clipAudio.Play();
+                clipAudio.loop = false;
+            }
         }
 
         if (canPlayLoop)
         {
+            Debug.Log(musicState);
             canPlayLoop = false;
+            if (musicState == 0)
+            {
+                
+                loopAudio.Stop();
+            }
             if (musicState == 1)
             {
                 loopAudio.clip = wallPaper;
+                loopAudio.Play();
+                loopAudio.loop = true;
+            }
+            if (musicState == 2)
+            {
+                loopAudio.clip = cherryMonday;
                 loopAudio.Play();
                 loopAudio.loop = true;
             }
@@ -63,6 +104,14 @@ public class AudioManager : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+        if (WinTrigger.instance.hasFinished)
+        {
+            musicState = 0;
+        }
+        if (sceneName == "Level01" && !WinTrigger.instance.hasFinished)
+        {
+            musicState = 2;
+        }
         if (sceneName == "MainMenu")
         {
             musicState = 1;

@@ -7,6 +7,7 @@ public class PlayerAnimation : MonoBehaviour
     #region Show in Inspector
 
     [SerializeField] PlayerController _player;
+    [SerializeField] GroundCheckerWithOverlap _groundTester;
 
     #endregion
     #region Unity Lifecycle
@@ -27,6 +28,31 @@ public class PlayerAnimation : MonoBehaviour
     {
         _player.canMove = true;
     }
+
+    #region Animation Events
+
+    public void FootstepsSFX()
+    {
+        if (_groundTester.TestCollision())
+        {
+            if (GroundCheckerWithOverlap.instance._buffer[0].tag == "StoneGround")
+                AudioManager.instance.clipState = 3;
+            if (GroundCheckerWithOverlap.instance._buffer[0].tag == "GrassGround")
+                AudioManager.instance.clipState = 4;
+            AudioManager.instance.canPlayClip = true;
+        }
+    }
+
+    public void LandingSFX()
+    {
+        if (GroundCheckerWithOverlap.instance._buffer[0].tag == "StoneGround")
+            AudioManager.instance.clipState = 5;
+        if (GroundCheckerWithOverlap.instance._buffer[0].tag == "GrassGround")
+            AudioManager.instance.clipState = 6;
+        AudioManager.instance.canPlayClip = true;
+    }
+
+    #endregion
 
     #region Private
 

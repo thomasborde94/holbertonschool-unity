@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundCheckerWithOverlap : MonoBehaviour
 {
     #region Show in Inspector
-
+    public static GroundCheckerWithOverlap instance;
 
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Color _gizmosColor;
@@ -14,6 +14,10 @@ public class GroundCheckerWithOverlap : MonoBehaviour
 
     #endregion
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     #region Main Methods
 
@@ -42,7 +46,7 @@ public class GroundCheckerWithOverlap : MonoBehaviour
 
     #region Private
 
-    private Collider[] _buffer = new Collider[1];
+    [HideInInspector] public Collider[] _buffer = new Collider[1];
 
 
     #endregion
