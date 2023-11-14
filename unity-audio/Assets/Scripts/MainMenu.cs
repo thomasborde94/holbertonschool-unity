@@ -13,6 +13,10 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName != "MainMenu")
+            PauseMenu.instance.unpausedAudio.TransitionTo(0.01f);
         SceneManager.LoadScene("Options");
     }
 

@@ -19,6 +19,7 @@ public class WinTrigger : MonoBehaviour
         {
             hasFinished = true;
             winCanvas.SetActive(true);
+            AudioManager.instance.musicState = 3;
             AudioManager.instance.canPlayLoop = true;
         }
     }

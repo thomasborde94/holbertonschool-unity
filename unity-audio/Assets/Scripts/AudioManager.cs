@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     #region Show in Inspector
     public static AudioManager instance;
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] public AudioSource clipAudio;
     [SerializeField] AudioClip buttonRollover;
     [SerializeField] AudioClip buttonClick;
@@ -17,11 +19,14 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioClip wallPaper;
     [SerializeField] AudioClip cherryMonday;
+    [SerializeField] AudioClip victoryPiano;
 
     public int clipState = 1;
     public int musicState = 0;
     [HideInInspector] public bool canPlayClip;
     [HideInInspector] public bool canPlayLoop;
+    [HideInInspector] public string bgmVolumeId = "bgmVolumeId";
+    [HideInInspector] public string sfxVolumeId = "sfxVolumeId";
     #endregion
 
     private void Awake()
@@ -32,8 +37,17 @@ public class AudioManager : MonoBehaviour
         loopAudio = GetComponent<AudioSource>();
     }
 
+    private void Start()
+    {
+        float bgmVolume = PlayerPrefs.GetFloat(bgmVolumeId, 0);
+        audioMixer.SetFloat("BGMVolume", bgmVolume);
+
+        float sfxVolume = PlayerPrefs.GetFloat(sfxVolumeId, 0);
+        audioMixer.SetFloat("SFXVolume", sfxVolume);
+    }
     private void Update()
     {
+        Debug.Log(PlayerPrefs.GetFloat(bgmVolumeId, 0));
         ChooseLoop();
         if (canPlayClip)
         {
@@ -78,7 +92,6 @@ public class AudioManager : MonoBehaviour
 
         if (canPlayLoop)
         {
-            Debug.Log(musicState);
             canPlayLoop = false;
             if (musicState == 0)
             {
@@ -97,6 +110,12 @@ public class AudioManager : MonoBehaviour
                 loopAudio.Play();
                 loopAudio.loop = true;
             }
+            if (musicState == 3)
+            {
+                loopAudio.clip = victoryPiano;
+                loopAudio.Play();
+                loopAudio.loop = false;
+            }
         }
     }
 
@@ -104,10 +123,7 @@ public class AudioManager : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (WinTrigger.instance.hasFinished)
-        {
-            musicState = 0;
-        }
+        
         if (sceneName == "Level01" && !WinTrigger.instance.hasFinished)
         {
             musicState = 2;
@@ -116,6 +132,19 @@ public class AudioManager : MonoBehaviour
         {
             musicState = 1;
         }
+        if (isInLevel())
+            if (WinTrigger.instance.hasFinished)
+            {
+                musicState = 3;
+            }
+    }
+    private bool isInLevel()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Level01" || sceneName == "Level02" || sceneName == "Level03")
+            return true;
+        else return false;
     }
 
     private AudioSource loopAudio;
