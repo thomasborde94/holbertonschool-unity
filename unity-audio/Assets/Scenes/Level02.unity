@@ -142,6 +142,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: big_platform_mushrooms (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7060048943219523559, guid: 0c75d2c063bef4e45a728f0849fa2a9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     - target: {fileID: 7688073060859569501, guid: 0c75d2c063bef4e45a728f0849fa2a9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -209,6 +214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: big_platform_mushrooms Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060048943219523559, guid: 0c75d2c063bef4e45a728f0849fa2a9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
       objectReference: {fileID: 0}
     - target: {fileID: 7688073060859569501, guid: 0c75d2c063bef4e45a728f0849fa2a9a,
         type: 3}
@@ -348,6 +358,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 74219d489a6b00243a97bb93fa46c429,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -474,6 +489,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cacfa57ed918ee409005eaacab1338a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -509,6 +529,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2981758330236716369, guid: 87c83df2a1b6050449311ff21ec5d479,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1497890921}
+    - target: {fileID: 2981758330236716369, guid: 87c83df2a1b6050449311ff21ec5d479,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4483889195169043336, guid: 87c83df2a1b6050449311ff21ec5d479,
         type: 3}
       propertyPath: m_Pivot.x
@@ -613,6 +643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857183770805884605, guid: 87c83df2a1b6050449311ff21ec5d479,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8060935147250525747, guid: 87c83df2a1b6050449311ff21ec5d479,
         type: 3}
@@ -1001,6 +1036,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 74219d489a6b00243a97bb93fa46c429,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1010,6 +1050,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1604612640}
   m_SourcePrefab: {fileID: 100100000, guid: 74219d489a6b00243a97bb93fa46c429, type: 3}
+--- !u!114 &511303412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6277995906918338641, guid: c4fba30ad9ccf7044b797ad3de6aa786,
+    type: 3}
+  m_PrefabInstance: {fileID: 4217625767596401917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52fffad82027ca444bea6e0b6251c77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &526765946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1092,6 +1144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cacfa57ed918ee409005eaacab1338a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1331,6 +1388,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &802811715
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2243218629839492995, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915732728873309678, guid: 3356d388e0dedba4f9e00e954c05e33a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3356d388e0dedba4f9e00e954c05e33a, type: 3}
 --- !u!4 &811830361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7960880772401293784, guid: 049b3785e3e6b4149b8b9af91b3a6d68,
@@ -1850,6 +1975,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: big_platform_mushrooms Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7060048943219523559, guid: 0c75d2c063bef4e45a728f0849fa2a9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     - target: {fileID: 7688073060859569501, guid: 0c75d2c063bef4e45a728f0849fa2a9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1913,11 +2043,75 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: clipAudio
+      value: 
+      objectReference: {fileID: 2065909493}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: swingDays
+      value: 
+      objectReference: {fileID: 8300000, guid: 99b9aac98e3f7b24aa27c09ae2813230, type: 3}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: e3e858381f133e4479c447377eb2022f,
+        type: 2}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: grassLanding
+      value: 
+      objectReference: {fileID: 8300000, guid: fe0e8334bae96ac409403c78310a9e10, type: 3}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: stoneLanding
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e087b638d1bc364d8d985713ee2ce7d, type: 3}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: victoryPiano
+      value: 
+      objectReference: {fileID: 8300000, guid: 33efd182409d00d49a1fc7ae9fd8c8f4, type: 3}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: grassFootstep
+      value: 
+      objectReference: {fileID: 8300000, guid: c66a4c7b695659a43bb36e4adab32ebb, type: 3}
+    - target: {fileID: 1758135854274136129, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: stoneFootstep
+      value: 
+      objectReference: {fileID: 8300000, guid: 5cb0a672ea9a0244fbbbcded8826d9e1, type: 3}
+    - target: {fileID: 3007624024208148071, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 99b9aac98e3f7b24aa27c09ae2813230, type: 3}
     - target: {fileID: 4570823435183541805, guid: 1a64660f1bda9fd43b0a9104925050c1,
         type: 3}
       propertyPath: pauseCanvas
       value: 
       objectReference: {fileID: 355831086}
+    - target: {fileID: 4570823435183541805, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: pausedAudio
+      value: 
+      objectReference: {fileID: -5152921029520354822, guid: e3e858381f133e4479c447377eb2022f,
+        type: 2}
+    - target: {fileID: 4570823435183541805, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: unpausedAudio
+      value: 
+      objectReference: {fileID: 8428140229568395387, guid: e3e858381f133e4479c447377eb2022f,
+        type: 2}
+    - target: {fileID: 5314081865224290840, guid: 1a64660f1bda9fd43b0a9104925050c1,
+        type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: e3e858381f133e4479c447377eb2022f,
+        type: 2}
     - target: {fileID: 7605119356759973915, guid: 1a64660f1bda9fd43b0a9104925050c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2107,6 +2301,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cacfa57ed918ee409005eaacab1338a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2198,6 +2397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 74219d489a6b00243a97bb93fa46c429,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2525,6 +2729,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cacfa57ed918ee409005eaacab1338a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2616,6 +2825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cacfa57ed918ee409005eaacab1338a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2709,6 +2923,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cacfa57ed918ee409005eaacab1338a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2800,6 +3019,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cacfa57ed918ee409005eaacab1338a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3303,6 +3527,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1432891288570637957}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &2065909493 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5586570327902224293, guid: 3356d388e0dedba4f9e00e954c05e33a,
+    type: 3}
+  m_PrefabInstance: {fileID: 802811715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2067992929
 GameObject:
   m_ObjectHideFlags: 0
@@ -3452,6 +3682,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: big_platform_mushrooms
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060048943219523559, guid: 0c75d2c063bef4e45a728f0849fa2a9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
       objectReference: {fileID: 0}
     - target: {fileID: 7688073060859569501, guid: 0c75d2c063bef4e45a728f0849fa2a9a,
         type: 3}
@@ -3656,6 +3891,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small_platform
       objectReference: {fileID: 0}
+    - target: {fileID: 3702047926846804644, guid: 7667deac19e77994f999a72967b91994,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     - target: {fileID: 4047469793750321182, guid: 7667deac19e77994f999a72967b91994,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3728,6 +3968,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: small_platform_flower
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668006863439776051, guid: b5180fd762d7efd45aed627bd9e206bc,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
       objectReference: {fileID: 0}
     - target: {fileID: 5441411775223927689, guid: b5180fd762d7efd45aed627bd9e206bc,
         type: 3}
@@ -3847,6 +4092,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: End_platform
       objectReference: {fileID: 0}
+    - target: {fileID: 8727109129164185888, guid: b371f01befb84db4fafbf147fdb1c2f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: StoneGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3885,6 +4135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5468062974394738079, guid: c4fba30ad9ccf7044b797ad3de6aa786,
+        type: 3}
+      propertyPath: _groundTester
+      value: 
+      objectReference: {fileID: 511303412}
     - target: {fileID: 6323836780637359293, guid: c4fba30ad9ccf7044b797ad3de6aa786,
         type: 3}
       propertyPath: winText
@@ -4041,6 +4296,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: medium_platform
       objectReference: {fileID: 0}
+    - target: {fileID: 7418209871564897665, guid: 3f72d95b07b7c994abefbd2c5dce128f,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     - target: {fileID: 7906375083841267515, guid: 3f72d95b07b7c994abefbd2c5dce128f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4109,6 +4369,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: medium_platform_flower
       objectReference: {fileID: 0}
+    - target: {fileID: 7332345837710768298, guid: d3beff2398e428d45aa57d54ad765d9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: GrassGround
+      objectReference: {fileID: 0}
     - target: {fileID: 7965294461978681872, guid: d3beff2398e428d45aa57d54ad765d9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4176,6 +4441,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Start_platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 7291726158428058466, guid: 049b3785e3e6b4149b8b9af91b3a6d68,
+        type: 3}
+      propertyPath: m_TagString
+      value: StoneGround
       objectReference: {fileID: 0}
     - target: {fileID: 7960880772401293784, guid: 049b3785e3e6b4149b8b9af91b3a6d68,
         type: 3}
@@ -4254,3 +4524,4 @@ SceneRoots:
   - {fileID: 1092696572}
   - {fileID: 1130255355}
   - {fileID: 1821640461}
+  - {fileID: 802811715}

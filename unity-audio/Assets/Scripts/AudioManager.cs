@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip wallPaper;
     [SerializeField] AudioClip cherryMonday;
     [SerializeField] AudioClip victoryPiano;
+    [SerializeField] AudioClip swingDays;
+    [SerializeField] AudioClip brittleRille;
 
     public int clipState = 1;
     public int musicState = 0;
@@ -47,7 +49,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(PlayerPrefs.GetFloat(bgmVolumeId, 0));
+        Debug.Log(musicState);
         ChooseLoop();
         if (canPlayClip)
         {
@@ -116,6 +118,18 @@ public class AudioManager : MonoBehaviour
                 loopAudio.Play();
                 loopAudio.loop = false;
             }
+            if (musicState == 4)
+            {
+                loopAudio.clip = swingDays;
+                loopAudio.Play();
+                loopAudio.loop = false;
+            }
+            if (musicState == 5)
+            {
+                loopAudio.clip = brittleRille;
+                loopAudio.Play();
+                loopAudio.loop = false;
+            }
         }
     }
 
@@ -128,6 +142,10 @@ public class AudioManager : MonoBehaviour
         {
             musicState = 2;
         }
+        if (sceneName == "Level02" && !WinTrigger.instance.hasFinished)
+            musicState = 4;
+        if (sceneName == "Level03" && !WinTrigger.instance.hasFinished)
+            musicState = 5;
         if (sceneName == "MainMenu")
         {
             musicState = 1;
