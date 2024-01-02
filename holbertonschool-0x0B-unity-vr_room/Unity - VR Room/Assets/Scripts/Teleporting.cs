@@ -24,7 +24,7 @@ public class Teleporting : MonoBehaviour
         float timer = 1f;
 
 
-        while (timer > 0f) // Transition inverse
+        while (timer > 0f)
         {
             timer -= Time.deltaTime * _fadeSpeed;
 
