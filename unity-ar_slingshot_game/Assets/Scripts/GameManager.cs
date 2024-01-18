@@ -40,22 +40,24 @@ public class GameManager : MonoBehaviour
         Debug.DrawRay(rays.origin, rays.direction * 100f, Color.red );
 
         /// -------- For Build -------- ///
-        if (Input.touchCount > 0 && selectedPlane == null && _planeManager.trackables.count > 0)
-        {
-            SelectPlane();
-        }
-        /// -------- For Editor ------- ///
-        /*
-        if (Input.GetMouseButtonDown(0) && selectedPlane == null && _planeManager.trackables.count > 0)
+        /*if (Input.touchCount > 0 && selectedPlane == null && _planeManager.trackables.count > 0)
         {
             SelectPlane();
         }
         */
+
+        /// -------- For Editor ------- ///
+        if (Input.GetMouseButtonDown(0) && selectedPlane == null && _planeManager.trackables.count > 0)
+        {
+            SelectPlane();
+        }
+
     }
 
     private void SelectPlane()
     {
         /// ------- For Build ----- ///
+        /*
         Touch touch = Input.GetTouch(0);
 
         if (touch.phase == TouchPhase.Began)
@@ -77,8 +79,9 @@ public class GameManager : MonoBehaviour
                 _startGameUI.SetActive(true);
             }
         }
+        */
         /// ---------- In Unity Editor ---------------- ///
-        /*Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
@@ -102,7 +105,7 @@ public class GameManager : MonoBehaviour
                 _selectPlaneUI.SetActive(false);
                 _startGameUI.SetActive(true);
             }
-        }*/
+        }
     }
 
     public void StartGame()
@@ -113,6 +116,8 @@ public class GameManager : MonoBehaviour
             target.GetComponent<TargetMove>().StartMoving(selectedPlane);
         }
         _startGameUI.SetActive(false);
+
+        SpawnAmmo.instance.Spawn();
     }
 
     #region Private

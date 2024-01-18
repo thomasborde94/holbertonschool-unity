@@ -269,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 51588045}
   - component: {fileID: 51588044}
+  - component: {fileID: 51588046}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -311,6 +312,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &51588046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51588043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ad05dbc65c91a4d83a6687862550c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ammoPrefab: {fileID: 652779321419604494, guid: 0a8007eba0952e14b98438d44e849ffe,
+    type: 3}
+  _camera: {fileID: 22732920}
 --- !u!1 &181064946
 GameObject:
   m_ObjectHideFlags: 0
