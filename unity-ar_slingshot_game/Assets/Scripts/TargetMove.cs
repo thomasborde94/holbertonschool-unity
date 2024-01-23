@@ -35,10 +35,6 @@ public class TargetMove : MonoBehaviour
         startMoving = true;
     }
 
-    /*public void StopMoving()
-    {
-        startMoving = false;
-    }*/
     public bool RandomPoint(Vector3 center, float rayYoffset, float range, out Vector3 result)
     {
         Vector3 next = center + Random.insideUnitSphere * range;
