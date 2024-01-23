@@ -56,20 +56,20 @@ public class GameManager : MonoBehaviour
         */
 
         /// -------- For Build -------- ///
-        /*
+        
         if (Input.touchCount > 0 && selectedPlane == null && _planeManager.trackables.count > 0)
         {
             SelectPlane();
         }
-        */
+        
 
         /// -------- For Editor ------- ///
-        
+        /*
         if (Input.GetMouseButtonDown(0) && selectedPlane == null && _planeManager.trackables.count > 0)
         {
             SelectPlane();
         }
-
+        */
 
         // Destroys lost ammo and spawn a new one
         if (SpawnAmmo.instance.spawnedPrefab != null && SpawnAmmo.instance.spawnedPrefab.transform.position.y <= planeYPos)
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
     private void SelectPlane()
     {
         /// ------- For Build ----- ///
-        /*
+        
         Touch touch = Input.GetTouch(0);
 
         if (touch.phase == TouchPhase.Began)
@@ -106,9 +106,9 @@ public class GameManager : MonoBehaviour
                 _startGameUI.SetActive(true);
             }
         }
-        */
-        /// ---------- In Unity Editor ---------------- ///
         
+        /// ---------- In Unity Editor ---------------- ///
+        /*
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
                 _startGameUI.SetActive(true);
             }
         }
-        
+        */
     }
 
     public void StartGame()
@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
             _playAgainUI.SetActive(true);
     }
     #region Private
-    
-    
+
+    private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     #endregion
 }

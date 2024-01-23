@@ -11,7 +11,13 @@ public class SpawnAmmo : MonoBehaviour
 
     [SerializeField] private float _ammoSpeed;
     [SerializeField] private float _nearClipPlaneDistance = 1f;
+    [SerializeField] private Transform releasePosition;
 
+    [Header("Trajectory Display")]
+    [SerializeField][Range(10, 100)] private int linePoints = 25;
+    [SerializeField][Range(0.01f, 0.25f)] private float timeBetweenPoints = 0.1f;
+
+    
     [HideInInspector] public GameObject spawnedPrefab;
     [HideInInspector] public bool _ammoNotTouched = true;
 
@@ -22,10 +28,13 @@ public class SpawnAmmo : MonoBehaviour
 
     private void Update()
     {
+        
         UpdateAmmoPosition();
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             GrabAmmo();
+            if (isAiming)
+                DrawProjection();
         }
     }
 
@@ -42,16 +51,35 @@ public class SpawnAmmo : MonoBehaviour
         Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, _camera.nearClipPlane + _nearClipPlaneDistance);
         worldCenter = _camera.ScreenToWorldPoint(screenCenter);
         float cameraRotationY = _camera.transform.rotation.eulerAngles.y - 90f;
-        
+
         spawnedPrefab = Instantiate(_ammoPrefab, worldCenter, Quaternion.Euler(0, cameraRotationY, 0));
+        _ammoRb = spawnedPrefab.GetComponent<Rigidbody>();
+        _lineRenderer = spawnedPrefab.GetComponent<LineRenderer>();
         _ammoNotTouched = true;
         
     }
     #endregion
+    private void DrawProjection()
+    {
+        Debug.Log("calling DrawProjection");
+        _lineRenderer.enabled = true;
+        _lineRenderer.positionCount = Mathf.CeilToInt(linePoints / timeBetweenPoints) + 1;
+        Vector3 startPosition = spawnedPrefab.transform.position;
+        Vector3 startVelocity = GrabAmmo() / _ammoRb.mass;
+        int i = 0;
+        _lineRenderer.SetPosition(i, startPosition);
+        for (float time = 0; time < linePoints; time += timeBetweenPoints)
+        {
+            i++;
+            Vector3 point = startPosition + time * startVelocity;
+            point.y = startPosition.y + startVelocity.y * time + (Physics.gravity.y / 2f * time * time);
+            _lineRenderer.SetPosition(i, point);
+        }
+    }
     private Vector3 GrabAmmo()
     {
         /// -------- Unity Editor ---------- ///
-        
+        /*
         if (spawnedPrefab != null)
         {
             Vector3 mousePos = Input.mousePosition;
@@ -61,6 +89,7 @@ public class SpawnAmmo : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Ammo") && (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)))
                 {
+                    isAiming = true;
                     // Gets the position of the original position of the ammo
                     if (Input.GetMouseButtonDown(0))
                     {
@@ -84,6 +113,7 @@ public class SpawnAmmo : MonoBehaviour
             if (Input.GetMouseButtonUp(0) && !_ammoNotTouched)
             {
                 fired = true;
+                isAiming = false;
             }
             float ammoRotationY = spawnedPrefab.transform.rotation.eulerAngles.y;
             dragVector = newPositionCam - originalPosCam;
@@ -97,13 +127,12 @@ public class SpawnAmmo : MonoBehaviour
             rotatedDragVector = Quaternion.Euler(0, ammoRotationY, 0) * dragVector;
             totalSpeed = _ammoSpeed * dragValue;
             force = totalSpeed * -rotatedDragVector.normalized;
-            Debug.Log(force);
             return force;
         }
-
+        */
 
         /// ------------ Build ------------- ///
-        /*
+        
         if (spawnedPrefab != null)
         {
             Vector3 touchPos = Input.GetTouch(0).position;
@@ -111,6 +140,7 @@ public class SpawnAmmo : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
+                isAiming = true;
                 if (hit.collider.CompareTag("Ammo") && (Input.GetTouch(0).phase == TouchPhase.Began || 
                     Input.GetTouch(0).phase == TouchPhase.Moved))
                 {
@@ -135,31 +165,34 @@ public class SpawnAmmo : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Ended && !_ammoNotTouched)
             {
                 fired = true;
+                isAiming = false;
             }
+            float ammoRotationY = spawnedPrefab.transform.rotation.eulerAngles.y;
+            dragVector = newPositionCam - originalPosCam;
+
+            // Calcul de la quantité de drag vers le bas
+            float temp = ((newPositionCam.y * 100f) / originalPosCam.y) / 100;
+            float dragValue = Mathf.Round((1 - temp) * 1000f) / 1000f;
+            dragVector = new Vector3(dragVector.y, 0f, -dragVector.x);
+
+            // Permets de se servir de la rotation Y de l'ammo pour donner l'impulsion à l'ammo
+            rotatedDragVector = Quaternion.Euler(0, ammoRotationY, 0) * dragVector;
+            totalSpeed = _ammoSpeed * dragValue;
+            force = totalSpeed * -rotatedDragVector.normalized;
+            return force;
         }
-        */
+        
 
         return Vector3.zero;
     }
 
     private void Firing()
     {
-        _ammoRb = spawnedPrefab.GetComponent<Rigidbody>();
+        Debug.Log("firing");
         _ammoRb.isKinematic = false;
-        /*float ammoRotationY = spawnedPrefab.transform.rotation.eulerAngles.y;
-        dragVector = newPositionCam - originalPosCam;
-
-        // Calcul de la quantité de drag vers le bas
-        float temp = ((newPositionCam.y * 100f) / originalPosCam.y) / 100;
-        float dragValue = Mathf.Round((1 - temp) * 1000f) / 1000f;
-        dragVector = new Vector3(dragVector.y, 0f, -dragVector.x);
-
-        // Permets de se servir de la rotation Y de l'ammo pour donner l'impulsion à l'ammo
-        rotatedDragVector = Quaternion.Euler(0, ammoRotationY, 0) * dragVector;
-        totalSpeed = _ammoSpeed * dragValue;*/
         _ammoRb.AddForce(-rotatedDragVector.normalized * totalSpeed, ForceMode.Impulse);
         fired = false;
-
+        _lineRenderer.enabled = false;
         GameManager.instance._ammoCount--;
     }
 
@@ -184,5 +217,7 @@ public class SpawnAmmo : MonoBehaviour
     private Vector3 rotatedDragVector;
     private Vector3 worldCenter;
     private bool fired = false;
+    private bool isAiming;
+    private LineRenderer _lineRenderer;
     #endregion
 }
