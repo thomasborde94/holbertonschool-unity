@@ -8,6 +8,7 @@ TagManager:
   - Target
   - SmokeTarget
   - ExplosionTarget
+  - CristalPart
   layers:
   - Default
   - TransparentFX

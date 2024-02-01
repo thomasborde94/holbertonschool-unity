@@ -28,6 +28,7 @@ public class AmmoCollisions : MonoBehaviour
         // If hit the target
         if (other.CompareTag("Target"))
         {
+            other.GetComponent<TargetMove>().startMoving = false;
             GameManager.instance._points += 10;
             ExplodeCrystal(other.gameObject);
             targetsToDestroy = GameObject.FindGameObjectsWithTag("Target");
@@ -44,32 +45,30 @@ public class AmmoCollisions : MonoBehaviour
 
     private void ExplodeCrystal(GameObject crystal)
     {
-        // Instantiate and activate explosion parts
-        foreach (Transform child in crystal.transform)
-        {
-            GameObject explosionPart = Instantiate(child.gameObject, child.position, child.rotation);
-            explosionPart.SetActive(true);
+        Transform[] children = crystal.GetComponentsInChildren<Transform>();
 
-            // Add force to simulate explosion
-            Rigidbody rb = explosionPart.GetComponent<Rigidbody>();
-            if (rb == null && explosionPart.CompareTag("SmokeTarget"))
-                explosionPart.SetActive(false);
-            else if (rb == null && explosionPart.CompareTag("ExplosionTarget"))
+        foreach (Transform child in children)
+        {
+            if (child.CompareTag("SmokeTarget"))
+                child.gameObject.SetActive(false);
+            else if (child.CompareTag("ExplosionTarget"))
             {
-                explosionPart.SetActive(true);
+                child.gameObject.SetActive(true);
             }
             else
             {
-                rb.isKinematic = false;
-                rb.AddExplosionForce(_explosionForce, crystal.transform.position, _explosionRadius);
-                explosionPart.GetComponent<FadeParts>()._shouldFade = true;
+                Rigidbody rb = child.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.isKinematic = false;
+                    rb.AddExplosionForce(_explosionForce, crystal.transform.position, _explosionRadius);
+                    child.GetComponent<FadeParts>()._shouldFade = true;
+                }
             }
         }
 
         StartCoroutine(DestroyOriginalCrystal(crystal));
     }
-
-    
 
     private IEnumerator DestroyOriginalCrystal(GameObject crystal)
     {
@@ -79,4 +78,5 @@ public class AmmoCollisions : MonoBehaviour
         Destroy(crystal);
         Debug.Log("destroy after 2 sec");
     }
+
 }

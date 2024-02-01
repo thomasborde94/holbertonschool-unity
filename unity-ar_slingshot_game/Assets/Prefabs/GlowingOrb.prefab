@@ -14620,7 +14620,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2786548114635265292}
@@ -14692,8 +14692,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionForce: 3
   _explosionRadius: 3
-  _fadeCristalMat: {fileID: 2100000, guid: 58e07dc124699cd4dbeb752e32ef7174, type: 2}
-  _fadeDuration: 10
   targetsToDestroy: []
 --- !u!114 &1674908057198687878
 MonoBehaviour:

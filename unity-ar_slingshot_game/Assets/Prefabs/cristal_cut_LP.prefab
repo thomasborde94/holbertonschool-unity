@@ -9996,7 +9996,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.24367996, g: 0.9716981, b: 0.2062567, a: 0.12941177}
+      maxColor: {r: 0.24367996, g: 0.9716981, b: 0.2062567, a: 0.050980393}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14659,11 +14659,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8676009807066356694, guid: 334542ba7acd84b41949605c4fb7219b,
+        type: 3}
+      propertyPath: m_TagString
+      value: CristalPart
+      objectReference: {fileID: 0}
+    - target: {fileID: -5437010058953933249, guid: 334542ba7acd84b41949605c4fb7219b,
+        type: 3}
+      propertyPath: m_TagString
+      value: CristalPart
+      objectReference: {fileID: 0}
     - target: {fileID: -4599474127141397850, guid: 334542ba7acd84b41949605c4fb7219b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 92c5c37c207fffd4890bfe005760a966, type: 2}
+    - target: {fileID: -1412614105290747489, guid: 334542ba7acd84b41949605c4fb7219b,
+        type: 3}
+      propertyPath: m_TagString
+      value: CristalPart
+      objectReference: {fileID: 0}
     - target: {fileID: -562214269202313683, guid: 334542ba7acd84b41949605c4fb7219b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -14674,6 +14689,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 92c5c37c207fffd4890bfe005760a966, type: 2}
+    - target: {fileID: 257242497418238158, guid: 334542ba7acd84b41949605c4fb7219b,
+        type: 3}
+      propertyPath: m_TagString
+      value: CristalPart
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 334542ba7acd84b41949605c4fb7219b,
         type: 3}
       propertyPath: m_Name
@@ -14694,6 +14714,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 92c5c37c207fffd4890bfe005760a966, type: 2}
+    - target: {fileID: 5113346841814189776, guid: 334542ba7acd84b41949605c4fb7219b,
+        type: 3}
+      propertyPath: m_TagString
+      value: CristalPart
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032896644306591905, guid: 334542ba7acd84b41949605c4fb7219b,
+        type: 3}
+      propertyPath: m_TagString
+      value: CristalPart
+      objectReference: {fileID: 0}
     - target: {fileID: 8319570960806610379, guid: 334542ba7acd84b41949605c4fb7219b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -64,12 +64,12 @@ public class GameManager : MonoBehaviour
         */
 
         /// -------- For Editor ------- ///
-        
+
         if (Input.GetMouseButtonDown(0) && selectedPlane == null && _planeManager.trackables.count > 0)
         {
             SelectPlane();
         }
-        
+
 
         // Destroys lost ammo and spawn a new one
         if (SpawnAmmo.instance.spawnedPrefab != null && SpawnAmmo.instance.spawnedPrefab.transform.position.y <= planeYPos)
@@ -107,8 +107,10 @@ public class GameManager : MonoBehaviour
             }
         }
         */
+
+
         /// ---------- In Unity Editor ---------------- ///
-        
+
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
@@ -131,7 +133,7 @@ public class GameManager : MonoBehaviour
                 _startGameUI.SetActive(true);
             }
         }
-        
+
     }
 
     public void StartGame()

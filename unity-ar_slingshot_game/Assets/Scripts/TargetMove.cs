@@ -56,7 +56,7 @@ public class TargetMove : MonoBehaviour
     private float range;
     private bool hasDestination;
     private Vector3 destination;
-    private bool startMoving = false;
+    public bool startMoving = false;
     private ARPlane movePlane;
     private float colliderHeight;
 }
