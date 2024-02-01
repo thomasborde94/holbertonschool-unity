@@ -36,8 +36,8 @@ public class AmmoEvolutions : MonoBehaviour
         shapeModule.radius = newRadius;
 
         // Smoke alpha
-        float minSmokeAlpha = 0.11f;
-        float maxSmokeAlpha = 0.32f;
+        float minSmokeAlpha = 0.07f;
+        float maxSmokeAlpha = 0.15f;
         float newAlpha = Mathf.Lerp(minSmokeAlpha, maxSmokeAlpha, SpawnAmmo.instance.DragValue);
         Color color = new Color(0.81f, 1f, 0.59f, newAlpha);
 

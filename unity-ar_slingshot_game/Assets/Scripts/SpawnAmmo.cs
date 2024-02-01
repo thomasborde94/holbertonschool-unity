@@ -78,7 +78,7 @@ public class SpawnAmmo : MonoBehaviour
     private Vector3 GrabAmmo()
     {
         /// -------- Unity Editor ---------- ///
-
+#if UNITY_EDITOR
         if (spawnedPrefab != null)
         {
             Vector3 mousePos = Input.mousePosition;
@@ -86,6 +86,7 @@ public class SpawnAmmo : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
+                Debug.Log(hit.collider.tag);
                 if (hit.collider.CompareTag("Ammo") && (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)))
                 {
                     isAiming = true;
@@ -129,9 +130,9 @@ public class SpawnAmmo : MonoBehaviour
             return force;
         }
 
-
+#else
         /// ------------ Build ------------- ///
-        /*
+
         if (spawnedPrefab != null)
         {
             Vector3 touchPos = Input.GetTouch(0).position;
@@ -139,10 +140,11 @@ public class SpawnAmmo : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                isAiming = true;
+
                 if (hit.collider.CompareTag("Ammo") && (Input.GetTouch(0).phase == TouchPhase.Began || 
                     Input.GetTouch(0).phase == TouchPhase.Moved))
                 {
+                    isAiming = true;
                     // Gets the position of the original position of the ammo
                     if (Input.GetTouch(0).phase == TouchPhase.Began)
                     {
@@ -180,8 +182,7 @@ public class SpawnAmmo : MonoBehaviour
             force = totalSpeed * -rotatedDragVector.normalized;
             return force;
         }
-        */
-
+#endif
         return Vector3.zero;
     }
 
