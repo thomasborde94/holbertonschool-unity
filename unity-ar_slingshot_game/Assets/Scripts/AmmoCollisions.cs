@@ -5,7 +5,12 @@ using UnityEngine;
 public class AmmoCollisions : MonoBehaviour
 {
     public static AmmoCollisions instance;
+
+    [SerializeField] private float _explosionForce;
+    [SerializeField] private float _explosionRadius;
+
     [HideInInspector] public GameObject[] targetsToDestroy;
+    
 
     private void Awake()
     {
@@ -23,9 +28,8 @@ public class AmmoCollisions : MonoBehaviour
         // If hit the target
         if (other.CompareTag("Target"))
         {
-            Debug.Log(targetsToDestroy.Length);
             GameManager.instance._points += 10;
-            Destroy(other.gameObject);
+            ExplodeCrystal(other.gameObject);
             targetsToDestroy = GameObject.FindGameObjectsWithTag("Target");
             
             if (targetsToDestroy.Length == 1)
@@ -36,5 +40,43 @@ public class AmmoCollisions : MonoBehaviour
             else
                 GameManager.instance.NewAmmo();
         }
+    }
+
+    private void ExplodeCrystal(GameObject crystal)
+    {
+        // Instantiate and activate explosion parts
+        foreach (Transform child in crystal.transform)
+        {
+            GameObject explosionPart = Instantiate(child.gameObject, child.position, child.rotation);
+            explosionPart.SetActive(true);
+
+            // Add force to simulate explosion
+            Rigidbody rb = explosionPart.GetComponent<Rigidbody>();
+            if (rb == null && explosionPart.CompareTag("SmokeTarget"))
+                explosionPart.SetActive(false);
+            else if (rb == null && explosionPart.CompareTag("ExplosionTarget"))
+            {
+                explosionPart.SetActive(true);
+            }
+            else
+            {
+                rb.isKinematic = false;
+                rb.AddExplosionForce(_explosionForce, crystal.transform.position, _explosionRadius);
+                explosionPart.GetComponent<FadeParts>()._shouldFade = true;
+            }
+        }
+
+        StartCoroutine(DestroyOriginalCrystal(crystal));
+    }
+
+    
+
+    private IEnumerator DestroyOriginalCrystal(GameObject crystal)
+    {
+        
+        Debug.Log("called destroy original");
+        yield return new WaitForSeconds(2f);
+        Destroy(crystal);
+        Debug.Log("destroy after 2 sec");
     }
 }

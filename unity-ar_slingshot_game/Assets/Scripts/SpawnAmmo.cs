@@ -11,7 +11,6 @@ public class SpawnAmmo : MonoBehaviour
 
     [SerializeField] private float _ammoSpeed;
     [SerializeField] private float _nearClipPlaneDistance = 1f;
-    [SerializeField] private Transform releasePosition;
 
     [Header("Trajectory Display")]
     [SerializeField][Range(10, 100)] private int linePoints = 25;
@@ -20,6 +19,7 @@ public class SpawnAmmo : MonoBehaviour
     
     [HideInInspector] public GameObject spawnedPrefab;
     [HideInInspector] public bool _ammoNotTouched = true;
+    [HideInInspector] public bool isAiming;
 
     private void Awake()
     {
@@ -61,7 +61,6 @@ public class SpawnAmmo : MonoBehaviour
     #endregion
     private void DrawProjection()
     {
-        Debug.Log("calling DrawProjection");
         _lineRenderer.enabled = true;
         _lineRenderer.positionCount = Mathf.CeilToInt(linePoints / timeBetweenPoints) + 1;
         Vector3 startPosition = spawnedPrefab.transform.position;
@@ -79,7 +78,7 @@ public class SpawnAmmo : MonoBehaviour
     private Vector3 GrabAmmo()
     {
         /// -------- Unity Editor ---------- ///
-        /*
+
         if (spawnedPrefab != null)
         {
             Vector3 mousePos = Input.mousePosition;
@@ -120,7 +119,7 @@ public class SpawnAmmo : MonoBehaviour
 
             // Calcul de la quantité de drag vers le bas
             float temp = ((newPositionCam.y * 100f) / originalPosCam.y) / 100;
-            float dragValue = Mathf.Round((1 - temp) * 1000f) / 1000f;
+            dragValue = Mathf.Round((1 - temp) * 1000f) / 1000f;
             dragVector = new Vector3(dragVector.y, 0f, -dragVector.x);
 
             // Permets de se servir de la rotation Y de l'ammo pour donner l'impulsion à l'ammo
@@ -129,10 +128,10 @@ public class SpawnAmmo : MonoBehaviour
             force = totalSpeed * -rotatedDragVector.normalized;
             return force;
         }
-        */
+
 
         /// ------------ Build ------------- ///
-        
+        /*
         if (spawnedPrefab != null)
         {
             Vector3 touchPos = Input.GetTouch(0).position;
@@ -172,7 +171,7 @@ public class SpawnAmmo : MonoBehaviour
 
             // Calcul de la quantité de drag vers le bas
             float temp = ((newPositionCam.y * 100f) / originalPosCam.y) / 100;
-            float dragValue = Mathf.Round((1 - temp) * 1000f) / 1000f;
+            dragValue = Mathf.Round((1 - temp) * 1000f) / 1000f;
             dragVector = new Vector3(dragVector.y, 0f, -dragVector.x);
 
             // Permets de se servir de la rotation Y de l'ammo pour donner l'impulsion à l'ammo
@@ -181,14 +180,13 @@ public class SpawnAmmo : MonoBehaviour
             force = totalSpeed * -rotatedDragVector.normalized;
             return force;
         }
-        
+        */
 
         return Vector3.zero;
     }
 
     private void Firing()
     {
-        Debug.Log("firing");
         _ammoRb.isKinematic = false;
         _ammoRb.AddForce(-rotatedDragVector.normalized * totalSpeed, ForceMode.Impulse);
         fired = false;
@@ -206,6 +204,11 @@ public class SpawnAmmo : MonoBehaviour
         }
     }
 
+    public float DragValue
+    {
+        get { return dragValue; }
+    }
+
     #region Private
     private Rigidbody _ammoRb;
 
@@ -213,11 +216,12 @@ public class SpawnAmmo : MonoBehaviour
     private Vector3 originalPosCam;
     private Vector3 dragVector;
     private Vector3 force;
+    private float dragValue;
     private float totalSpeed;
     private Vector3 rotatedDragVector;
     private Vector3 worldCenter;
     private bool fired = false;
-    private bool isAiming;
+    
     private LineRenderer _lineRenderer;
     #endregion
 }

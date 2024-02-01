@@ -6,7 +6,6 @@ using UnityEngine.XR.ARFoundation;
 public class TargetMove : MonoBehaviour
 {
     [SerializeField] private float speed = 0.01f;
-    
 
     void Update()
     {
@@ -23,14 +22,15 @@ public class TargetMove : MonoBehaviour
         else
             hasDestination = RandomPoint(planeCenter, rayYoffset, range, out destination);
     }
+
     public void StartMoving(ARPlane plane)
     {
         movePlane = plane;
         planeCenter = plane.center;
         range = Mathf.Max(plane.size.x, plane.size.y);
-        rayYoffset = 0.5f;
-        colliderHeight = transform.localScale.y * GetComponent<CapsuleCollider>().height;
-        transform.position = planeCenter + Vector3.up * colliderHeight / 2;
+        //rayYoffset = 0.5f;
+        //colliderHeight = transform.localScale.y * GetComponent<CapsuleCollider>().height;
+        //transform.position = planeCenter + Vector3.up * colliderHeight / 2;
         hasDestination = RandomPoint(planeCenter, rayYoffset, range, out destination);
         startMoving = true;
     }

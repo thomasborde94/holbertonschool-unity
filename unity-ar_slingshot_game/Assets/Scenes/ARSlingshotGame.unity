@@ -292,7 +292,7 @@ MonoBehaviour:
   _raycastManager: {fileID: 388525033}
   _planeManager: {fileID: 388525035}
   _camera: {fileID: 22732920}
-  _targetPrefab: {fileID: 519175482834133205, guid: c208966c41c213b40bfbdd0263a60df2,
+  _targetPrefab: {fileID: 4588729324071580921, guid: 9a7648090d2e7fc4f9e81f39941559eb,
     type: 3}
   _targetAmount: 5
   _ammoCount: 7
@@ -332,16 +332,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ad05dbc65c91a4d83a6687862550c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ammoPrefab: {fileID: 652779321419604494, guid: 0a8007eba0952e14b98438d44e849ffe,
+  _ammoPrefab: {fileID: 6744763272050928524, guid: 830e42f523b095a478c06a7127b6e48e,
     type: 3}
   _camera: {fileID: 22732920}
   _ammoSpeed: 6
   _nearClipPlaneDistance: 0.4
-  releasePosition: {fileID: 0}
   linePoints: 40
   timeBetweenPoints: 0.07
   spawnedPrefab: {fileID: 0}
   _ammoNotTouched: 1
+  isAiming: 0
 --- !u!1 &181064946
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +554,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193473043}
   m_CullTransparentMesh: 1
+--- !u!1 &195928925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 195928926}
+  m_Layer: 0
+  m_Name: TargetRotationRef
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &195928926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195928925}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!850595691 &215015243
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1709,7 +1740,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 148.47, y: 70}
+  m_AnchoredPosition: {x: 148.48438, y: 70}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1685579745
@@ -2167,3 +2198,4 @@ SceneRoots:
   - {fileID: 212175866532230322}
   - {fileID: 51588045}
   - {fileID: 933678271}
+  - {fileID: 195928926}
