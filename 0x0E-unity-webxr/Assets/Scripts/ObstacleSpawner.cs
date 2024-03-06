@@ -22,17 +22,36 @@ public class ObstacleSpawner : MonoBehaviour
     }
     private void Update()
     {
-        if (PlayerController.Instance.ball != null)
+        if (!VRControlSwitcher.XRisPresent())
         {
-            if (PlayerController.Instance.ball.GetComponent<BallScript>().isInAlley && !IsAnyObstacleSpawned)
+            if (PlayerController.Instance.ball != null)
             {
-                shouldSpawnObstacles = true;
-            }
-            if (!PlayerController.Instance.ball.GetComponent<BallScript>().isInAlley)
-            {
-                DisableObstacles();
+                if (PlayerController.Instance.ball.GetComponent<BallScript>().isInAlley && !IsAnyObstacleSpawned)
+                {
+                    shouldSpawnObstacles = true;
+                }
+                if (!PlayerController.Instance.ball.GetComponent<BallScript>().isInAlley)
+                {
+                    DisableObstacles();
+                }
             }
         }
+
+        else if (VRControlSwitcher.XRisPresent())
+        {
+            if (VRInteractions.Instance.ball != null)
+            {
+                if (VRInteractions.Instance.ball.GetComponent<BallScript>().isInAlley && !IsAnyObstacleSpawned)
+                {
+                    shouldSpawnObstacles = true;
+                }
+                if (!VRInteractions.Instance.ball.GetComponent<BallScript>().isInAlley)
+                {
+                    DisableObstacles();
+                }
+            }
+        }
+            
 
         if (shouldSpawnObstacles)
             SpawnObstacles ();

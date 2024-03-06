@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    [HideInInspector] public bool isInAlley = false;
+    public bool isInAlley = false;
     [HideInInspector] public bool isInSpeedBoost = false;
     [HideInInspector] public bool hasBeenThrown = false;
 
+    public bool hasBeenPickedUp = false;
 
+    public void PickedUpBall()
+    {
+        VRInteractions.Instance.ball = this.gameObject;
+        hasBeenPickedUp = true;
+    }
+    public void ThrewBall()
+    {
+        hasBeenPickedUp = false;
+        VRInteractions.Instance.throwingBall = true;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Alley"))
@@ -18,7 +29,9 @@ public class BallScript : MonoBehaviour
         }
 
         if (other.CompareTag("SpeedBoost"))
+        {
             isInSpeedBoost = true;
+        }
         if (other.CompareTag("Reset"))
         {
             StartCoroutine(DisableBall());

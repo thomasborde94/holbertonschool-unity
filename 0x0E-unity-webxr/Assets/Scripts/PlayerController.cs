@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public GameObject ball;
     [HideInInspector] public bool canMove = true;
+    [HideInInspector] public bool throwingBall;
 
     private void Awake()
     {
@@ -26,10 +27,12 @@ public class PlayerController : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
         else
             Destroy(gameObject);
 
-        characterController = GetComponent<CharacterController>();
+        if (!VRControlSwitcher.XRisPresent())
+            characterController = GetComponent<CharacterController>();
         mainCamera = Camera.main;
     }
         
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         if (inputHandler != null)
         {
             PickupBall();
@@ -53,7 +57,8 @@ public class PlayerController : MonoBehaviour
         }
         else
             Debug.Log("input handler null");
-        HandleGravity();
+        if (!VRControlSwitcher.XRisPresent())
+            HandleGravity();
 
         if (AllBallsThrown())
             StartCoroutine(ResetBalls());
@@ -86,7 +91,8 @@ public class PlayerController : MonoBehaviour
         //else
         if (canMove)
         {
-            characterController.Move(currentMovement * Time.deltaTime);
+            if (!VRControlSwitcher.XRisPresent())
+                characterController.Move(currentMovement * Time.deltaTime);
             CameraControl.Instance.shouldAnim = false;
             CameraControl.Instance.playedCoroutine = false;
         }
@@ -107,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void PickupBall()
     {
-        if (inputHandler.PickingUp)
+        if (inputHandler.PickingUp/* || AnyBallPickedUp()*/)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -176,6 +182,16 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
+    private bool AnyBallPickedUp()
+    {
+        for (int i = 0; i < ballsArray.Length;i++)
+        {
+            if (ballsArray[i].GetComponent<BallScript>().hasBeenPickedUp)
+                return true;
+        }
+        return false;
+    }
+
     private void SaveInitialTransforms()
     {
         initialBallsPositions = new Vector3[ballsArray.Length];
@@ -214,7 +230,6 @@ public class PlayerController : MonoBehaviour
                 ballRigidbody.velocity += new Vector3(0, 0, ballSpeedBoost);
             }
         }
-        
     }
 
     private void HandleGravity()
@@ -252,7 +267,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 ballVelocity;
     private Vector3 previousBallPosition;
-    private bool throwingBall;
+    
     private int maxQueueSize = 5;
     private Queue<Vector3> velocityQueue = new Queue<Vector3>();
     private Vector3 throwVelocity;

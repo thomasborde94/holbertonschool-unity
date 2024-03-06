@@ -9,13 +9,15 @@ public class CameraControl : MonoBehaviour
     [SerializeField] Transform cameraTargetTransform;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private Camera mainCamera;
+
     public bool shouldAnim = false;
     public bool animBack = false;
 
     private void Awake()
     {
         Instance = this;
-        mainCamera = Camera.main;
+
     }
     private void Start()
     {
@@ -42,7 +44,7 @@ public class CameraControl : MonoBehaviour
 
     public IEnumerator MoveCamera(Vector3 targetPosition)
     {
-        while (transform.position != targetPosition || transform.rotation != targetRotation)
+        while (Vector3.Distance(transform.position, targetPosition) > 0.5f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -55,11 +57,9 @@ public class CameraControl : MonoBehaviour
 
     IEnumerator MoveCameraBack(Vector3 targetPosition)
     {
-        Debug.Log("lance la deuxieme coroutine");
         float distanceThreshold = 0.01f;
         while (Vector3.Distance(transform.position, targetPosition) > distanceThreshold)
         {
-            Debug.Log("on entre dans la boucle pour revenir");
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, rotationSpeed * Time.deltaTime);
 
@@ -80,7 +80,7 @@ public class CameraControl : MonoBehaviour
     private int minZoom = 40;
     private int maxZoom = 80;
     private int zoomSpeed = 30;
-    private Camera mainCamera;
+    
     private Vector3 initialPosition;
     private Quaternion initialRotation;
     public bool playedCoroutine = false;

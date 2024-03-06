@@ -37,8 +37,6 @@ public class PlayerInputHandler : MonoBehaviour
         zoomoutAction = playerControls.FindActionMap(actionMapName).FindAction(zoomout);
 
         RegisterInputActions();
-
-        PrintDevices();
     }
 
     private void RegisterInputActions()
@@ -55,16 +53,6 @@ public class PlayerInputHandler : MonoBehaviour
         zoomoutAction.canceled += context => ZoomOut = false;
     }
 
-    private void PrintDevices()
-    {
-        foreach (var device in InputSystem.devices)
-        {
-            if (device.enabled)
-            {
-                Debug.Log("Active Device: " + device.name);
-            }
-        }
-    }
     private void OnEnable()
     {
         moveAction.Enable();
